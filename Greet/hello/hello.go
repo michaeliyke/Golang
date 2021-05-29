@@ -10,10 +10,11 @@ import (
 func main() {
 	log.SetPrefix("greetings: ")
 	log.SetFlags(0)
+	names := []string{"Gladys", "Samantha", "Darrin"}
 	// Declare and initialize a variable in one line
-	message, error := greetings.Hello("Gladys")
-	if error != nil {
-		log.Fatal(error)
+	messages, err := greetings.Hellos(names)
+	if err != nil {
+		log.Fatal(err)
 	}
-	fmt.Println(message)
+	fmt.Println(messages)
 }
