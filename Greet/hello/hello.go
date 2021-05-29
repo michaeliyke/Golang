@@ -11,7 +11,7 @@ func main() {
 	log.SetPrefix("greetings: ")
 	log.SetFlags(0)
 	// Declare and initialize a variable in one line
-	message, error := greetings.Hello("")
+	message, error := greetings.Hello("Gladys")
 	if error != nil {
 		log.Fatal(error)
 	}

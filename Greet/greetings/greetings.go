@@ -4,6 +4,8 @@ package greetings
 import (
 	"fmt"
 	"errors"
+	"math/rand"
+	"time"
 )
 
 func Hello(name string) (string, error) {
@@ -11,6 +13,20 @@ func Hello(name string) (string, error) {
 		return "", errors.New("Empty name")
 	}
 	// Declare and initialize a variable in one line
-	message := fmt.Sprintf("Hi, %v. welcome", name)
+	message := fmt.Sprintf(randomFormat(), name)
 	return message, nil
+}
+
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
+func randomFormat() string {
+	formats := []string {
+		"Hi, %v welcome!",
+		"Great to see you, %v!",
+		"Hail, %v! Well met!",
+	}
+	return formats[rand.Intn(len(formats))]
 }
