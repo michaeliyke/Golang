@@ -19,6 +19,15 @@ func Hello(name string) (string, error) {
 	return message, nil
 }
 
+func HelloError(name string) (string, error) {
+	if name == "" {
+		return "", errors.New("Empty name")
+	}
+	// Declare and initialize a variable in one line
+	message := fmt.Sprintf(randomFormat())
+	return message, nil
+}
+
 func Hellos(names []string) (map[string]string, error) {
 	// A map to associate names with messages
 	messages := make(map[string]string)
