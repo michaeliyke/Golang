@@ -8,9 +8,20 @@ package main
 // Any "unexported" names are not accessible from outside the package.
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
-	fmt.Println("Value of pi is: ", math.Pi)
+	fmt.Println("Sum: ", add(42, 13))
+	fmt.Println("DIfference: ", subtract(42, 13))
+}
+
+// Notice that the type comes after the variable name
+func add(x int, y int) int {
+	return x + y
+}
+
+// When two or more consecutive named function parameters share a type,
+// you can omit the type from all but the last.
+func subtract(z, y int) int {
+	return z - y
 }
