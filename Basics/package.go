@@ -1,19 +1,19 @@
-// Programs start running in package main.
 package main
 
-// In Go, a name is exported if it begins with a capital letter.
-// For example, Pizza is an exported name, as is Pi, which is exported from the math package
-
-// When importing a package, you can refer only to its exported names.
-// Any "unexported" names are not accessible from outside the package.
 import (
 	"fmt"
 )
 
 func main() {
-	x, y := swap("Iyke", "Michael")
-	fmt.Println(x, y)
+	fmt.Println(split(17))
 }
-func swap(x string, y string) (string, string) {
-	return y, x
+
+// Go's return values may be named, eg x int, y int.
+// If so, they are treated as variables defined at the top of the function
+// A return statement without arguments returns the named return values.
+// This is known as a "naked" return.
+func split(sum int) (x int, y int) {
+	x = sum * 4 / 9
+	y = sum - x
+	return
 }
