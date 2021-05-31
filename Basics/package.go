@@ -11,17 +11,9 @@ import (
 )
 
 func main() {
-	fmt.Println("Sum: ", add(42, 13))
-	fmt.Println("DIfference: ", subtract(42, 13))
+	x, y := swap("Iyke", "Michael")
+	fmt.Println(x, y)
 }
-
-// Notice that the type comes after the variable name
-func add(x int, y int) int {
-	return x + y
-}
-
-// When two or more consecutive named function parameters share a type,
-// you can omit the type from all but the last.
-func subtract(z, y int) int {
-	return z - y
+func swap(x string, y string) (string, string) {
+	return y, x
 }
