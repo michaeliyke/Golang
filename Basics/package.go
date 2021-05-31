@@ -1,21 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /*
-Variables declared without an explicit initial value are given their zero value.
+var i int = 42
+var f float64 = float64(i)
+var u uint = uint(f)
 
-The zero value is:
+Or, put more simply:
 
-0 for numeric types,
-false for the boolean type, and
-"" (the empty string) for strings.
+i := 42
+f := float64(i)
+u := uint(f)
+
+Unlike in C, in Go assignment between items of different type requires an explicit
+conversion
 */
-
 func main() {
-	var i int
-	var f float64
-	var b bool
-	var s string
-	fmt.Printf("%v %v %v %q\n", i, f, b, s)
+	var x, y int = 3, 4
+	var f float64 = math.Sqrt(float64(x*x + y*y))
+	var z uint = uint(f)
+	fmt.Println(x, y, z)
 }
