@@ -1,8 +1,23 @@
 package main
 
-// If you omit the loop condition it loops forever,
-// so an infinite loop is compactly expressed.
+import (
+	"fmt"
+	"math"
+)
+
+/*
+Go's if statements are like its for loops;
+the expression need not be surrounded by parentheses ( )
+but the braces { } are required.
+*/
+
+func sqrt(x float64) string {
+	if x < 0 {
+		return sqrt(-x) + "i"
+	}
+	return fmt.Sprint(math.Sqrt(x))
+}
+
 func main() {
-	/*for {
-	}*/
+	fmt.Println(sqrt(2), sqrt(-4))
 }
