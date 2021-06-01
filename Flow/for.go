@@ -3,16 +3,18 @@ package main
 import "example.com/log"
 
 /*
-A defer statement defers the execution of a function until t
-he surrounding function returns.
-
-The deferred call's arguments are evaluated immediately, but
- the function call is not executed until the surrounding function
- returns.
+Deferred function calls are pushed onto a stack. When a
+function returns, its deferred calls are executed in
+last-in-first-out order.
+https://blog.golang.org/defer-panic-and-recover
 */
 
 func main() {
-	defer log.P("world")
+	log.P("counting")
 
-	log.P("hello")
+	for i := 0; i <= 10; i++ {
+		defer log.P(i)
+	}
+
+	log.P("done")
 }
