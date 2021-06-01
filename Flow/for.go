@@ -1,26 +1,18 @@
 package main
 
-import (
-	"time"
-
-	"example.com/log"
-)
+import "example.com/log"
 
 /*
-Switch without a condition is the same as switch true.
+A defer statement defers the execution of a function until t
+he surrounding function returns.
 
-This construct can be a clean way to write long if-then-else
- chains.
+The deferred call's arguments are evaluated immediately, but
+ the function call is not executed until the surrounding function
+ returns.
 */
 
 func main() {
-	t := time.Now()
-	switch {
-	case t.Hour() < 12:
-		log.P("Good morning!")
-	case t.Hour() < 17:
-		log.P("Good afternoon.")
-	default:
-		log.P("Good evening.")
-	}
+	defer log.P("world")
+
+	log.P("hello")
 }
