@@ -6,17 +6,21 @@ import (
 	"example.com/log"
 )
 
+/*
+Switch without a condition is the same as switch true.
+
+This construct can be a clean way to write long if-then-else
+ chains.
+*/
+
 func main() {
-	log.P("When's Saturday?")
-	today := time.Now().Weekday()
-	switch time.Saturday {
-	case today + 0:
-		log.P("Today.")
-	case today + 1:
-		log.P("Tomorrow.")
-	case today + 2:
-		log.P("In two days.")
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		log.P("Good morning!")
+	case t.Hour() < 17:
+		log.P("Good afternoon.")
 	default:
-		log.P("Too far away.")
+		log.P("Good evening.")
 	}
 }
