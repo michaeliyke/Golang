@@ -2,6 +2,24 @@ package log
 
 import "fmt"
 
+func typeof(x interface{}) {
+	var typeof string = fmt.Sprintf("%T", x)
+	// fmt.Printf("%T\n", x)
+	P(typeof)
+}
+
+func ShowType(x interface{}) {
+	typeof(x)
+}
+
+func Type(x interface{}) {
+	typeof(x)
+}
+
+func TypeOf(x interface{}) {
+	typeof(x)
+}
+
 func Log(x interface{}) {
 	fmt.Println(x)
 }
