@@ -18,6 +18,10 @@ func Print(x interface{}) {
 	fmt.Print(x)
 }
 
+func Println(x interface{}) {
+	fmt.Println(x)
+}
+
 func P(x interface{}) {
 	fmt.Println(x)
 }
