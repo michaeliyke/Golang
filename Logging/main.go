@@ -4,12 +4,21 @@ import (
 	"bufio"
 	"os"
 	"strings"
+	"flag"
 
 	"example.com/log"
 )
 
 func main() {
-	file, error := os.Open("myapp.log")
+	path := flag.String("path", "myapp.log", "Path to log file")
+	level := flag.String(
+		"level", 
+		"ERROR", 
+		"Log level to search for.Options are: ERROR, DEBUG, INFO, and CRITICAL",
+	)
+	flag.Parse()
+
+	file, error := os.Open(*path)
 	if error != nil {
 		log.Fatal("ERROR OCCURED: ", error)
 	}
@@ -21,7 +30,7 @@ func main() {
 			break
 		}
 
-		if strings.Contains(str, "ERROR") {
+		if strings.Contains(str, *level) {
 			log.Println(str)
 		}
 	}
