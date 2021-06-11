@@ -1,4 +1,4 @@
-module example.com
+module example.com/gobigpicture
 
 go 1.16
 
