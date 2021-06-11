@@ -1,6 +1,13 @@
 package log
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
+
+func Fatal(args ...interface{}) {
+	log.Fatal(args...)
+}
 
 func typeof(datum interface{}, types ...string) bool {
 	if len(types) > 0 {
