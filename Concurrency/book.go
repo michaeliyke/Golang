@@ -21,7 +21,7 @@ func (b Book) String() string {
 var books = []Book{
 	Book{
 		ID:            1,
-		Title:         "The Hitchhiker's Guide to Galaxy",
+		Title:         "The Hitchhiker's Guide+ to Galaxy",
 		Author:        "Douglas Adams",
 		YearPublished: 1979,
 	},
