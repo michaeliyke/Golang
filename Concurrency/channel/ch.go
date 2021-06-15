@@ -10,12 +10,17 @@ func main() {
 	ch := make(chan int, 1) // Buffered channel takes size arg to indicate how many msgs can wait
 	wg.Add(2)
 	go func(ch <-chan int, wg *sync.WaitGroup) {
-		log.L(<-ch)
+		//if value, ok := ch; ok{}
+		for v := range ch {
+			log.Log(v)
+		}
 		wg.Done()
 	}(ch, wg)
 	go func(ch chan<- int, wg *sync.WaitGroup) {
-		ch <- 42
-		ch <- 27 // This will wait to no avail for receiver
+		for i := 1; i <= 10; i++ {
+			ch <- i
+		}
+		close(ch)
 		wg.Done()
 	}(ch, wg)
 	wg.Wait()
