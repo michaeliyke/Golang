@@ -7,7 +7,9 @@ import (
 
 func main() {
 	log.Println("Hello")
-	http.HandleFunc("/products", productsHandler)
-	http.HandleFunc("/products/", productHandler)
+	productListHandler := http.HandlerFunc(productsHandler)
+	productItemHandler := http.HandlerFunc(productHandler)
+	http.Handle("/products", middleWareHandler(productListHandler))
+	http.Handle("/products/", middleWareHandler(productItemHandler))
 	http.ListenAndServe(":80", nil)
 }
