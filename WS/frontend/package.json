@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4200 --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -17,7 +17,6 @@
     "@angular/compiler": "^9.0.2",
     "@angular/core": "^9.0.2",
     "@angular/forms": "^9.0.2",
-    "@angular/http": "^7.2.16",
     "@angular/material": "^9.1.0",
     "@angular/platform-browser": "^9.0.2",
     "@angular/platform-browser-dynamic": "^9.0.2",
