@@ -1,23 +1,49 @@
 package main
 
 import (
+	"encoding/json"
+	"io/ioutil"
+	"log"
 	"net/http"
 )
 
-type fooHandler struct {
-	Message string
-}
-
-func barHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Bar called"))
-}
-
-func (f *fooHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte(f.Message))
+func productHandler(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case http.MethodGet:
+		productsJSON, error := json.Marshal(productList)
+		if error != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		w.Header().Set("Content-Type", "aplication/json")
+		w.Write(productsJSON)
+	case http.MethodPost:
+		// Create a bew product
+		var newProduct Product
+		bodyBytes, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		err = json.Unmarshal(bodyBytes, &newProduct)
+		if err != nil {
+			w.WriteHeader(http.StatusBadGateway)
+			return
+		}
+		if newProduct.ProductID != 0 {
+			w.WriteHeader(http.StatusBadGateway)
+			return
+		}
+		newProduct.ProductID = getNextID()
+		productList = append(productList, newProduct)
+		w.WriteHeader(http.StatusCreated)
+		log.Println(newProduct)
+		return
+	}
 }
 
 func main() {
-	http.Handle("/foo", &fooHandler{Message: "Hello world!"})
-	http.HandleFunc("/bar", barHandler)
+	log.Println("Hello")
+	http.HandleFunc("/products", productHandler)
 	http.ListenAndServe(":80", nil)
 }
