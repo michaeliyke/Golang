@@ -82,3 +82,12 @@ func getNextID() int {
 	}
 	return highestID + 1
 }
+
+func findPoductByID(productID int) (*Product, int) {
+	for i, product := range productList {
+		if product.ProductID == productID {
+			return &product, i
+		}
+	}
+	return nil, 0
+}
