@@ -3,13 +3,13 @@ package main
 import (
 	"log"
 	"net/http"
+	"github.com/michaeliyke/Golang/webservice/product"
 )
+
+const apiBasePath = "/api"
 
 func main() {
 	log.Println("Hello")
-	productListHandler := http.HandlerFunc(productsHandler)
-	productItemHandler := http.HandlerFunc(productHandler)
-	http.Handle("/products", middleWareHandler(productListHandler))
-	http.Handle("/products/", middleWareHandler(productItemHandler))
+	product.setUpRoutes(apiBasePath)
 	http.ListenAndServe(":80", nil)
 }

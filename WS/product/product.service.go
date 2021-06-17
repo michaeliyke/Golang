@@ -1,15 +1,26 @@
-package main
+package product
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
+	"github.com/michaeliyke/Golang/webservice/cors"
 )
 
+var productsBasePath string = "products"
+
+func setUpRoutes(apiBasePath string) {
+	handleProducts := http.HandlerFunc(productsHandler)
+	handleProduct := http.HandlerFunc(productHandler)
+	http.Handle(fmt.Sprintf("%s%s", apiBasePath, productsBasePath), cors.MiddleWare(handleProducts))
+	http.Handle(fmt.Sprintf("%s%s", apiBasePath, productsBasePath), cors.MiddleWare(handleProduct))
+}
+
 func productsHandler(w http.ResponseWriter, r *http.Request) {
+	productList := getProductList()
 	switch r.Method {
 	case http.MethodGet:
 		productsJSON, error := json.Marshal(productList)
@@ -36,10 +47,14 @@ func productsHandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusBadGateway)
 			return
 		}
-		newProduct.ProductID = getNextID()
-		productList = append(productList, newProduct)
+		_, err = addOrUpdateProduct(newProduct)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
 		w.WriteHeader(http.StatusCreated)
-		log.Println(newProduct)
+		return
+	case http.MethodOptions:
 		return
 	}
 }
@@ -51,7 +66,7 @@ func productHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNotFound)
 		return
 	}
-	product, listItemIndex := findPoductByID(productID)
+	product := getProduct(productID)
 	if product == nil {
 		w.WriteHeader(http.StatusNotFound)
 		return
@@ -81,9 +96,12 @@ func productHandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
-		product = &updatedProduct
-		productList[listItemIndex] = *product
+		addOrUpdateProduct(updatedProduct)
 		w.WriteHeader(http.StatusOK)
+		return
+	case http.MethodDelete:
+		removeProduct(productID)
+	case http.MethodOptions:
 		return
 	default:
 		w.WriteHeader(http.StatusMethodNotAllowed)
