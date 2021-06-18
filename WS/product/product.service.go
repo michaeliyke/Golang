@@ -24,7 +24,7 @@ func productsHandler(w http.ResponseWriter, r *http.Request) {
 	productList := getProductList()
 	switch r.Method {
 	case http.MethodGet:
-		productsJSO	N, error := json.Marshal(productList)
+		productsJSON, error := json.Marshal(productList)
 		if error != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
