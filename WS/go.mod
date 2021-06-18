@@ -1,4 +1,4 @@
-module github.com/michaeliyke/Golang/webservice
+module github.com/michaeliyke/Golang/WS
 
 go 1.16
 

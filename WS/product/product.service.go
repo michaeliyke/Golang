@@ -7,16 +7,14 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-	"github.com/michaeliyke/Golang/webservice/cors"
+
+	"github.com/michaeliyke/Golang/WS/cors"
 )
 
 var productsBasePath string = "products"
 
-func setUpRoutes(apiBasePath string) {
-	handleProducts := http.HandlerFunc(productsHandler)
-	handleProduct := http.HandlerFunc(productHandler)
+func SetUpRoutes(apiBasePath string) {
 	http.Handle(fmt.Sprintf("%s%s", apiBasePath, productsBasePath), cors.MiddleWare(handleProducts))
-	http.Handle(fmt.Sprintf("%s%s", apiBasePath, productsBasePath), cors.MiddleWare(handleProduct))
 }
 
 func productsHandler(w http.ResponseWriter, r *http.Request) {
