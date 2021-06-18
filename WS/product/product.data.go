@@ -4,10 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"github.com/michaeliyke/Golang/log"
 	"os"
 	"sort"
 	"sync"
+
+	"github.com/michaeliyke/Golang/log"
 )
 
 var productMap = struct {
