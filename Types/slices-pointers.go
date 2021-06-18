@@ -1,6 +1,6 @@
 package main
 
-import "example.com/log"
+import "github.com/michaeliyke/Golang/log"
 
 /*
 A slice does not store any data, it just describes a section of

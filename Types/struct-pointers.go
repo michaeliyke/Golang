@@ -1,6 +1,6 @@
 package main
 
-import "example.com/log"
+import "github.com/michaeliyke/Golang/log"
 
 /*
 To access the field X of a struct when we have the struct pointer

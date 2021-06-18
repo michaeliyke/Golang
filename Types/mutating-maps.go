@@ -1,7 +1,7 @@
 package main
 
 import (
-	"example.com/log"
+	"github.com/michaeliyke/Golang/log"
 )
 
 /*

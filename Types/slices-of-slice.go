@@ -3,7 +3,7 @@ package main
 import (
 	"strings"
 
-	"example.com/log"
+	"github.com/michaeliyke/Golang/log"
 )
 
 /*

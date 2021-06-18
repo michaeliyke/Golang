@@ -3,7 +3,7 @@ package main
 import (
   "math"
 
-  "example.com/log"
+  "github.com/michaeliyke/Golang/log"
 )
 
 /*

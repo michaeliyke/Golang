@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"github.com/michaeliyke/Golang/log"
 	"net/http"
 
 	"github.com/michaeliyke/Golang/WS/product"

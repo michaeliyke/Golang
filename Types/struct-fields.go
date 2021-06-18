@@ -1,6 +1,6 @@
 package main
 
-import "example.com/log"
+import "github.com/michaeliyke/Golang/log"
 
 /*
 Struct fields are accessed using a dot.

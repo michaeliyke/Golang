@@ -1,6 +1,6 @@
 package main
 
-import "example.com/log"
+import "github.com/michaeliyke/Golang/log"
 
 /*
 The zero value of a slice is nil.

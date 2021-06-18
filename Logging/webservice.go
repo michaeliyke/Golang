@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"example.com/log"
+	"github.com/michaeliyke/Golang/log"
 )
 
 func main() {

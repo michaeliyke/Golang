@@ -1,6 +1,6 @@
 package main
 
-import "example.com/log"
+import "github.com/michaeliyke/Golang/log"
 
 /*
    Go has pointers. A pointer holds the memory address of a value.

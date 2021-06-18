@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
+	"github.com/michaeliyke/Golang/log"
 	"os"
 	"sort"
 	"sync"

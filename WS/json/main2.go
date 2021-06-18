@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 
-	"example.com/log"
+	"github.com/michaeliyke/Golang/log"
 )
 
 type Product struct {

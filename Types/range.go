@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"example.com/log"
+	"github.com/michaeliyke/Golang/log"
 )
 
 /*

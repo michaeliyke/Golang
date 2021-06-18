@@ -1,7 +1,7 @@
 package cors
 
 import (
-	"log"
+	"github.com/michaeliyke/Golang/log"
 	"net/http"
 	"time"
 )
