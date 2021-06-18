@@ -16,8 +16,8 @@ var productsBasePath string = "products"
 func SetUpRoutes(apiBasePath string) {
 	handleProducts := http.HandlerFunc(productsHandler)
 	handleProduct := http.HandlerFunc(productHandler)
-	http.Handle(fmt.Sprintf("%s%s", apiBasePath, productsBasePath), cors.MiddleWare(handleProducts))
-	http.Handle(fmt.Sprintf("%s%s", apiBasePath, productsBasePath), cors.MiddleWare(handleProduct))
+	http.Handle(fmt.Sprintf("%s%s", apiBasePath, productsBasePath), cors.Middleware(handleProducts))
+	http.Handle(fmt.Sprintf("%s%s", apiBasePath, productsBasePath), cors.Middleware(handleProduct))
 }
 
 func productsHandler(w http.ResponseWriter, r *http.Request) {

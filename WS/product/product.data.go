@@ -28,7 +28,7 @@ func init() {
 }
 
 func loadProductMap() (map[int]Product, error) {
-	fileName := "../products.json"
+	fileName := "products.json"
 	_, err := os.Stat(fileName)
 	if os.IsNotExist(err) {
 		return nil, fmt.Errorf("File [%s] does not exist", fileName)
